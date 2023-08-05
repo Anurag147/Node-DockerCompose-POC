@@ -1,0 +1,14 @@
+#Specify version of docker compose
+version: '3'
+
+#Add the services required to access our node app and redis cache server
+#Redis-Server means redis, image is pulled from Docker Hub, and name of this image is used in our node app
+#Node app is our node js app which will run on specified ports, build . command says that image of this app can be created from docker file provided in the same directory
+services:
+  redis-server: 
+    image: 'redis'
+  node-app:
+     restart: always
+     build: .
+     ports:
+      - "8081:8081"
